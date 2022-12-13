@@ -17,11 +17,12 @@ process processData {
     input:
     val x
 
-    // output:
-    // file 'output.tsv' into records_ch
+    output:
+    file 'summary.tsv'
+    file 'converted.mgf'
 
     """
-    python $TOOL_FOLDER/script.py $params.library_name output.tsv
+    python $TOOL_FOLDER/convert.py "$params.library_name" summary.tsv converted.mgf
     """
 }
 

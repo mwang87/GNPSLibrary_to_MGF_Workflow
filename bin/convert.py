@@ -12,7 +12,7 @@ def main():
 
     args = parser.parse_args()
 
-    gnps_url = "https://gnps-external.ucsd.edu/gnpslibrary/{}.json".format(input_libraryname)
+    gnps_url = "https://gnps-external.ucsd.edu/gnpslibrary/{}.json".format(args.input_libraryname)
 
     all_spectra_list = requests.get(gnps_url).json()
     summary_list = []
