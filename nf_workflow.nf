@@ -1,6 +1,7 @@
 #!/usr/bin/env nextflow
+nextflow.enable.dsl=2
 
-params.input = "README.md"
+params.library_name = "GNPS-LIBRARY"
 
 // Workflow Boiler Plate
 params.OMETALINKING_YAML = "flow_filelinking.yaml"
@@ -14,12 +15,17 @@ process processData {
     conda "$TOOL_FOLDER/conda_env.yml"
 
     input:
-    file input from Channel.fromPath(params.input)
+    val x
 
-    output:
-    file 'output.tsv' into records_ch
+    // output:
+    // file 'output.tsv' into records_ch
 
     """
-    python $TOOL_FOLDER/script.py $input output.tsv
+    python $TOOL_FOLDER/script.py $params.library_name output.tsv
     """
+}
+
+workflow {
+  def num = Channel.of(1)
+  processData(num)
 }
