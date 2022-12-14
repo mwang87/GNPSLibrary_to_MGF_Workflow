@@ -8,11 +8,17 @@ Views:
     parameters:
         filename: nf_output/summary.tsv
         columns:
+            -   title: "Visualize"
+                data: 
             -   title: "spectrum_id"
                 data: spectrum_id
             -   title: "scan"
                 data: scan
             -   title: "Precursor_MZ"
                 data: Precursor_MZ
+        columnDefs: '[ {"targets": 0,"data": null,"render": function ( data, type, row, meta ) {
+        return `
+            <a target="_blank" href="/spectrumpeakscompare?format=lorikeet&usi1=mzspec:GNPS2:TASK-${task}:nf_output/converted.mgf:scan:${row["scan"]}">View Spectrum</a>
+            <a target="_blank" href="https://metabolomics-usi.gnps2.org/dashinterface/?usi1=mzspec:GNPS2:TASK-${task}:nf_output/converted.mgf:scan:${row["scan"]}">View USI</a>
+        `;}}]'
         
-            
