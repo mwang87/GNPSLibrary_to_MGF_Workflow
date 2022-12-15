@@ -23,3 +23,14 @@ Views:
             <a target="_blank" href="https://metabolomics-usi.gnps2.org/dashinterface/?usi1=mzspec:GNPS2:TASK-${task}-nf_output/converted.mgf:scan:${row["scan"]}">View USI</a>
         `;}}]'
         
+-   name: Downstream Analysis - Networking Barebones
+    displayname: Downstream Analysis - Networking Barebones
+    viewname: downstreamnetworkingbarebones
+    displaytype: linkout
+    parameters:
+        baseurl: /workflowinput
+        urlparam:
+            -   workflowname:networking_barebone_workflow
+        hashparam:
+            -   inputspectra:TASKLOCATION/[task]/nf_output/converted.mgf
+            -   description:Networking Barebones from [task] Library Download
